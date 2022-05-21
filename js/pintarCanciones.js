@@ -5,7 +5,6 @@ export function pintarCanciones(canciones){
 
     //recorro el arreglo de canciones
     canciones.tracks.forEach((cancion)=>{
-        console.log(cancion.name)
         console.log(cancion.preview_url)
         console.log(cancion.album.images[0].url)
 
@@ -28,11 +27,20 @@ export function pintarCanciones(canciones){
         audio.classList.add("w-100")
         audio.setAttribute("controls","controls")
 
+        let divBody=document.createElement("div")
+        divBody.classList.add('card-body')
+
+        let title=document.createElement('h5')
+        title.classList.add('card-title')
+        title.textContent=cancion.name;
+
         //PADRES E HIJOS
-        tarjeta.appendChild(foto)
-        tarjeta.appendChild(audio)
-        columna.appendChild(tarjeta)
-        fila.appendChild(columna)
+        divBody.appendChild(title);
+        tarjeta.appendChild(foto);
+        tarjeta.appendChild(audio);
+        tarjeta.appendChild(divBody);
+        columna.appendChild(tarjeta);
+        fila.appendChild(columna);
 
     })
 }
